@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Testing API</title>
+</head>
+<body>
+	<form action="#">
+		<input type="text">
+		<input type="text">
+		<button id="submit" class="btn">Отправить</button>
+	</form>
+	<script>
+		const BTN_SUBMIT = document.querySelector('#submit');
+		BTN_SUBMIT.addEventListener('click', (event) => {
+			event.preventDefault();
+			fetch('http://photoservice/web/api/users', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: `first_name=Ivan&last_name=Ivanov&phone=345345346&passhash=123&token=345eretertger346`
+			}).then((response) => response.json())
+			.then((result) => console.log(result))
+		})
+	</script>
+</body>
+</html>
